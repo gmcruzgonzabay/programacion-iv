@@ -1,3 +1,5 @@
+import 'package:componentes/screens/home_screen.dart';
+import 'package:componentes/screens/card_screen.dart';
 import 'package:flutter/material.dart';
 import 'screens/list_view.dart';
 
@@ -12,11 +14,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      debugShowCheckedModeBanner: false,
+      title: 'App Componentes',
+     // themeMode: ThemeData().primaryColorLight(),
+
+      theme: ThemeData.light().copyWith(
+          primaryColor: Colors.cyan,
+          appBarTheme: AppBarTheme(backgroundColor: Colors.indigo,
+          foregroundColor: Colors.white,
+          elevation: 8,)
+
+
       ),
-      home: ListViewScreen(),
+
+    
+      initialRoute:'cardscreen' ,
+     // home: ListViewScreen(),
+      routes: {
+            '/': (context)=>HomeScreen(),
+            'lisviewscreen': (context)=> ListViewScreen(),
+            'cardscreen': (context)=> CardScreen()
+      },
+     
     );
   }
 }
