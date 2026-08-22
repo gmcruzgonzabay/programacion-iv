@@ -1,5 +1,6 @@
 import 'package:componentes/screens/home_screen.dart';
 import 'package:componentes/screens/card_screen.dart';
+import 'package:componentes/screens/images_screen.dart';
 import 'package:flutter/material.dart';
 import 'screens/list_view.dart';
 
@@ -28,12 +29,13 @@ class MyApp extends StatelessWidget {
       ),
 
     
-      initialRoute:'cardscreen' ,
+      initialRoute:'imagescreen' ,
      // home: ListViewScreen(),
       routes: {
             '/': (context)=>HomeScreen(),
             'lisviewscreen': (context)=> ListViewScreen(),
-            'cardscreen': (context)=> CardScreen()
+            'cardscreen': (context)=> CardScreen(), 
+            'imagescreen':(context) =>ImageScreen()
       },
      
     );
