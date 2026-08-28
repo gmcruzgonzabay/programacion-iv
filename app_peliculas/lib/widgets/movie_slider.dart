@@ -25,14 +25,9 @@ SizedBox(
   child: ListView.builder(
     scrollDirection: Axis.horizontal,
     itemCount: 2,
-    itemBuilder: (_, int index){
-      return Container(
-        margin: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-  
-        width: 130,
-        height: 190,
-        color: Colors.green,
-      );
+    itemBuilder: (_, int index)
+    {
+      return MoviePoster(index: index,);
   
     }
   
@@ -44,5 +39,31 @@ SizedBox(
       ),
 
     );
+  }
+}
+
+class MoviePoster extends StatelessWidget {
+  final int index;
+
+
+
+  const MoviePoster({super.key, required this.index});
+
+  @override
+  Widget build(BuildContext context) {
+     return Container(
+        margin: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+  
+        width: 130,
+        height: 190,
+        color: Colors.green,
+        child: Column(
+
+          children: [
+
+            FadeInImage(placeholder: AssetImage('assets/no-image.jpg'), image: NetworkImage('https://picsum.photos/130/100?random=$index'))
+          ],
+        ),
+      );
   }
 }
