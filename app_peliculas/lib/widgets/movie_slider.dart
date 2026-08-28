@@ -61,7 +61,15 @@ class MoviePoster extends StatelessWidget {
 
           children: [
 
-            FadeInImage(placeholder: AssetImage('assets/no-image.jpg'), image: NetworkImage('https://picsum.photos/130/100?random=$index'))
+            FadeInImage(
+              width: 130,
+              height: 130,
+              placeholder: AssetImage('assets/no-image.jpg'), 
+            fit: BoxFit.cover,
+            image: NetworkImage('https://picsum.photos/130/100?random=$index')),
+
+            Text('Id minim deserunt sunt eu dolor officia qui non.', overflow: TextOverflow.ellipsis,)
+
           ],
         ),
       );
