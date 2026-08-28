@@ -8,10 +8,11 @@ class CardSwipper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   final size= MediaQuery.of(context).size;
-   debugPrint(" total ${size}");
+
+   //debugPrint(" total ${size}");
 
 
- debugPrint(" alto ${size.height*0.3}");
+ //debugPrint(" alto ${size.height*0.3}");
     return Container(
 
       width: double.infinity,
@@ -21,11 +22,23 @@ class CardSwipper extends StatelessWidget {
       child: Swiper(itemCount: 10,
       layout: SwiperLayout.STACK,
      
-      itemHeight: size.height*0.3,
+      itemHeight: size.height*0.4,
       itemWidth: size.width*0.9,
       itemBuilder: (_,int index){
 
-        return FadeInImage(placeholder: NetworkImage('https://picsum.photos/300/300'), image: NetworkImage('https://picsum.photos/300/300'));
+
+        
+
+        return GestureDetector(
+              onTap: () =>  Navigator.pushNamed(context, 'detail',arguments: 'movie-instance'),
+
+          child: ClipRRect(
+            borderRadius: BorderRadiusGeometry.circular(20),
+            child: FadeInImage(
+              placeholder: AssetImage('assets/no-image.jpg'),
+               image: NetworkImage('https://picsum.photos/300/300')),
+          ),
+        );
       },
       ),
     );
