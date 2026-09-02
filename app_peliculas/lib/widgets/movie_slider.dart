@@ -8,7 +8,7 @@ class MovieSlider extends StatelessWidget {
     return Container(
       width: double.infinity,
       height: 500,
-      color: Colors.blue,
+    
       child: Column(
 
         children: [
@@ -56,19 +56,26 @@ class MoviePoster extends StatelessWidget {
   
         width: 130,
         height: 190,
-        color: Colors.green,
+    
         child: Column(
 
           children: [
 
-            FadeInImage(
-              width: 130,
-              height: 130,
-              placeholder: AssetImage('assets/no-image.jpg'), 
-            fit: BoxFit.cover,
-            image: NetworkImage('https://picsum.photos/130/100?random=$index')),
+            GestureDetector(
+              onTap: () => Navigator.pushNamed(context, 'detail', arguments: 'movie-instance'),
+              child: ClipRRect
+              (
+                borderRadius: BorderRadiusGeometry.circular(15),
+                child: FadeInImage(
+                  width: 130,
+                  height: 130,
+                  placeholder: AssetImage('assets/no-image.jpg'), 
+                fit: BoxFit.cover,
+                image: NetworkImage('https://picsum.photos/130/100?random=$index')),
+              ),
+            ),
 
-            Text('Id minim deserunt sunt eu dolor officia qui non.', overflow: TextOverflow.ellipsis,)
+            Text('Id minim deserunt sunt eu dolor officia qui non.', overflow: TextOverflow.ellipsis,maxLines: 2,)
 
           ],
         ),

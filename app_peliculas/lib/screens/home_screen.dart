@@ -21,7 +21,8 @@ const HomeScreen({super.key});
         child: Column(
           children: [
             CardSwipper(),
-            MovieSlider(),  
+            MovieSlider(), 
+    
           ],
         ),
       ),
