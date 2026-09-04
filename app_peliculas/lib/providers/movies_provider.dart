@@ -41,10 +41,32 @@ class MoviesProvider extends ChangeNotifier {
     onDisplayMovie=nowPlayingResponse.results!;
     notifyListeners();
 
+  } // Fin OnDisplayMovie
 
 
+  Future<void> getPopularMovies() async
+  {
 
-  }
+     debugPrint('getOnDisplayMovies');
+    var url=Uri.https(_baseUrl,'3/movie/now_playing',
+    {
+      'api_key': _apiKey,
+      'language':_language,
+      'page': '1'
+
+    });
+
+
+    final response = await  http.get(url);
+    //final Map<String, dynamic> decodeData=json.decode(response.body);
+    //debugPrint(decodeData['dates']['maximum']);
+    final nowPlayingResponse= PopularResponse.fromRawJson(response.body);
+  //debugPrint(nowPlayingResponse.results?[2].title);
+    onDisplayMovie=nowPlayingResponse.results!;
+    notifyListeners();
+
+
+  }// Fin getPopularMovies
 
 
 
