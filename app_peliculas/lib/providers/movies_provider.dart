@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'package:app_peliculas/models/movie.dart';
 import 'package:app_peliculas/models/movie_model.dart';
+import 'package:app_peliculas/models/popular_response.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,6 +13,7 @@ class MoviesProvider extends ChangeNotifier {
   String _language='es-ES';
 
   List<Movie> onDisplayMovie =[];
+  List<Movie> popularMovies=[];
 
 
   MoviesProvider()
@@ -60,9 +62,10 @@ class MoviesProvider extends ChangeNotifier {
     final response = await  http.get(url);
     //final Map<String, dynamic> decodeData=json.decode(response.body);
     //debugPrint(decodeData['dates']['maximum']);
-    final nowPlayingResponse= PopularResponse.fromRawJson(response.body);
+    final popularResponse= PopularResponse.fromRawJson(response.body);
   //debugPrint(nowPlayingResponse.results?[2].title);
-    onDisplayMovie=nowPlayingResponse.results!;
+    //onDisplayMovie=nowPlayingResponse.results!;
+    popularMovies=popularResponse.results;
     notifyListeners();
 
 

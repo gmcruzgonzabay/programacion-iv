@@ -25,7 +25,7 @@ const HomeScreen({super.key});
       body: SingleChildScrollView(
         child: Column(
           children: [
-            CardSwipper(movies: moviesProvider.onDisplayMovie,),
+            CardSwipper(movies: moviesProvider.onDisplayMovie ,),
             MovieSlider(), 
     
           ],
