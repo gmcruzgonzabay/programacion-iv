@@ -1,8 +1,12 @@
+import 'package:app_peliculas/models/movie.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 
 class CardSwipper extends StatelessWidget {
-  const CardSwipper({super.key});
+  final List<Movie> movies;
+
+
+  const CardSwipper({super.key, required this.movies});
 
 
   @override
@@ -13,20 +17,22 @@ class CardSwipper extends StatelessWidget {
 
 
  //debugPrint(" alto ${size.height*0.3}");
-    return Container(
+    return SizedBox(
 
       width: double.infinity,
       height: 500,
       
       
-      child: Swiper(itemCount: 10,
+      child: Swiper(
+      itemCount: movies.length,
       layout: SwiperLayout.STACK,
      
       itemHeight: size.height*0.4,
       itemWidth: size.width*0.9,
       itemBuilder: (_,int index){
 
-
+        final movie=movies[index];
+        debugPrint(movie.posterPath);
         
 
         return GestureDetector(
@@ -36,7 +42,7 @@ class CardSwipper extends StatelessWidget {
             borderRadius: BorderRadiusGeometry.circular(20),
             child: FadeInImage(
               placeholder: AssetImage('assets/no-image.jpg'),
-               image: NetworkImage('https://picsum.photos/300/300')),
+               image: NetworkImage(movie.fullPosterImage)),
           ),
         );
       },
